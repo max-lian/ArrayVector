@@ -103,19 +103,13 @@ public class ArrayVectorImpl implements ArrayVector {
     @Override
     public ArrayVector sum(ArrayVector anotherVector) {
         int anotherLenght=anotherVector.getSize();
-        if(lenght > anotherLenght){
-            for (int i = 0; i < anotherLenght;i++){
-                double value1=anotherVector.get(i);
-                value1+=a[i];
-                anotherVector.set(i,value1);
-            }
-        }
-        else{
-            for (int i = 0; i < lenght;i++) {
-                double value1 = anotherVector.get(i);
-                value1 += a[i];
-                anotherVector.set(i, value1);
-            }
+        int count=0;
+        if (lenght > anotherVector.getSize()) count = anotherVector.getSize();
+        else count = lenght;
+        for (int i = 0; i < count;i++) {
+            double value1 = anotherVector.get(i);
+            value1 += a[i];
+            anotherVector.set(i, value1);
         }
         return anotherVector;
     }
